@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -65,12 +65,59 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* Estilo da barra de rolagem do modal */
+        .modal-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        .modal-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .modal-scroll::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        .modal-scroll::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Estilo para o FAQ (Details/Summary) */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary ~ * {
+            animation: sweep .5s ease-in-out;
+        }
+        @keyframes sweep {
+            0%    {opacity: 0; transform: translateY(-10px)}
+            100%  {opacity: 1; transform: translateY(0)}
+        }
+
+        /* Animação do Carrossel (Ticker) */
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Move metade, pois o conteúdo é duplicado */
+        }
+        
+        .scrolling-track {
+            display: flex;
+            width: max-content;
+            animation: scroll-left 60s linear infinite; /* Velocidade bem lenta (60s) */
+        }
+
+        /* Pausa a animação quando o mouse passa por cima do TRILHO */
+        .scrolling-wrapper:hover .scrolling-track {
+            animation-play-state: paused;
+        }
     </style>
 </head>
 <body class="font-sans text-gray-800 bg-brand-cream antialiased">
 
     <!-- Navbar Simples -->
-    <nav class="bg-brand-dark text-white py-4 shadow-lg sticky top-0 z-50">
+    <nav class="bg-brand-dark text-white py-4 shadow-lg sticky top-0 z-40">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <div class="text-xl font-serif font-bold text-brand-gold">
                 <i class="fa-solid fa-whisk mr-2"></i> MasterChef Doce Lucrativo
@@ -306,7 +353,8 @@
             </div>
         </div>
     </section>
-<!-- SESSÃO ATUALIZADA: Depoimentos (Carrossel Infinito) -->
+
+    <!-- SESSÃO ATUALIZADA: Depoimentos (Carrossel Infinito) -->
     <section class="py-20 bg-brand-cream overflow-hidden">
         <div class="container mx-auto px-4 mb-12">
             <div class="text-center fade-in-up">
@@ -508,12 +556,13 @@
             </div>
         </div>
     </section>
-    <!-- Sessão 6: Autoridade e Posicionamento -->
+
+    <!-- Sessão 6: Autoridade e Posicionamento (Método) -->
     <section class="py-20 bg-brand-cream">
         <div class="container mx-auto px-4 max-w-4xl text-center">
-            <h2 class="font-serif text-3xl md:text-4xl text-brand-dark font-bold mb-8">Por que ser uma Confeiteira "MasterChef"?</h2>
+            <h2 class="font-serif text-3xl md:text-4xl text-brand-dark font-bold mb-8">Por que nosso método funciona?</h2>
             <p class="text-gray-600 mb-12 text-lg">
-                O mercado está cheio de amadores. Para cobrar preços premium, você precisa entregar uma experiência premium. Nosso método baseia-se nos <strong class="text-brand-accent">5 Pilares da Diferenciação</strong>:
+                O mercado está cheio de amadores. Para cobrar preços premium, você precisa dos <strong class="text-brand-accent">5 Pilares da Diferenciação</strong>:
             </p>
 
             <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
@@ -559,6 +608,63 @@
             </div>
         </div>
     </section>
+
+    <!-- NOVA SESSÃO: FAQ (Perguntas Frequentes) -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <div class="text-center mb-12 fade-in-up">
+                <h2 class="font-serif text-3xl text-brand-dark font-bold mb-4">Perguntas Frequentes</h2>
+                <div class="w-16 h-1 bg-brand-gold mx-auto"></div>
+            </div>
+
+            <div class="space-y-4 fade-in-up">
+                <!-- Pergunta 1 -->
+                <details class="bg-gray-50 p-4 rounded-lg shadow-sm group">
+                    <summary class="font-bold text-brand-dark cursor-pointer flex justify-between items-center">
+                        O curso serve para quem é iniciante?
+                        <i class="fa-solid fa-chevron-down text-brand-gold transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <p class="mt-3 text-gray-600 text-sm leading-relaxed">
+                        Com certeza! O método foi desenhado para te levar do zero absoluto (sem saber ligar o forno) até a produção de doces profissionais. Ensinamos cada etapa detalhadamente.
+                    </p>
+                </details>
+
+                <!-- Pergunta 2 -->
+                <details class="bg-gray-50 p-4 rounded-lg shadow-sm group">
+                    <summary class="font-bold text-brand-dark cursor-pointer flex justify-between items-center">
+                        Preciso de batedeira planetária ou equipamentos caros?
+                        <i class="fa-solid fa-chevron-down text-brand-gold transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <p class="mt-3 text-gray-600 text-sm leading-relaxed">
+                        Não! Você pode começar com os utensílios que já tem na sua cozinha. Ensinamos técnicas manuais que entregam o mesmo resultado profissional. O investimento em máquinas vem depois, com o lucro das vendas.
+                    </p>
+                </details>
+
+                <!-- Pergunta 3 -->
+                <details class="bg-gray-50 p-4 rounded-lg shadow-sm group">
+                    <summary class="font-bold text-brand-dark cursor-pointer flex justify-between items-center">
+                        Por quanto tempo terei acesso ao curso?
+                        <i class="fa-solid fa-chevron-down text-brand-gold transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <p class="mt-3 text-gray-600 text-sm leading-relaxed">
+                        O acesso ao curso, às atualizações e à Planilha Automatizada é de 1 ano (12 meses). Você pode assistir quantas vezes quiser, no seu ritmo.
+                    </p>
+                </details>
+
+                <!-- Pergunta 4 -->
+                <details class="bg-gray-50 p-4 rounded-lg shadow-sm group">
+                    <summary class="font-bold text-brand-dark cursor-pointer flex justify-between items-center">
+                        Como funciona a garantia?
+                        <i class="fa-solid fa-chevron-down text-brand-gold transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <p class="mt-3 text-gray-600 text-sm leading-relaxed">
+                        É risco zero. Você entra, assiste às aulas, baixa a planilha e, se em até 7 dias achar que não é para você, devolvemos 100% do seu dinheiro. Sem perguntas.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Sessão 7: Chamada Final (Fechamento) -->
     <section id="comprar" class="py-24 bg-brand-dark text-center relative overflow-hidden">
@@ -686,5 +792,6 @@
 </html>
 
 </html>
+
 
 
