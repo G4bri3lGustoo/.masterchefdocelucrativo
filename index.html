@@ -65,6 +65,55 @@
         html {
             scroll-behavior: smooth;
         }
+        /* Estilo da barra de rolagem do modal */
+        .modal-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        .modal-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .modal-scroll::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        .modal-scroll::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Estilo para o FAQ (Details/Summary) */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary ~ * {
+            animation: sweep .5s ease-in-out;
+        }
+        @keyframes sweep {
+            0%    {opacity: 0; transform: translateY(-10px)}
+            100%  {opacity: 1; transform: translateY(0)}
+        }
+
+        /* Animação do Carrossel (Ticker) */
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Move metade, pois o conteúdo é duplicado */
+        }
+        
+        .scrolling-track {
+            display: flex;
+            width: max-content;
+            animation: scroll-left 60s linear infinite; /* Velocidade bem lenta (60s) */
+        }
+
+        /* Pausa a animação quando o mouse passa por cima do TRILHO */
+        .scrolling-wrapper:hover .scrolling-track {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-brand-cream antialiased">
     </style>
 </head>
 <body class="font-sans text-gray-800 bg-brand-cream antialiased">
@@ -485,4 +534,5 @@
 </html>
 
 </html>
+
 
